@@ -11,7 +11,7 @@ public class PathBehaviour : MonoBehaviour, IInteraction
         if (pathFollower.CurrentWayPointId <= 0)
         {
             pathFollower.CurrentWayPointId = pathFollower.MaxPointNumber - 1;
-            anchorEventBroadcaster.BoadcastDetach();
+            anchorEventBroadcaster.BroadcastDetach();
         }
     }
 

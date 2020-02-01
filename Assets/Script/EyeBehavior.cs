@@ -42,7 +42,7 @@ public class EyeBehavior : MonoBehaviour, IInteraction
         }
         if (eyeOpenness > 5)
         {
-            anchorEventBroadcaster.BoadcastDetach();
+            anchorEventBroadcaster.BroadcastDetach();
             eyeOpenness = 5;
         }
         else

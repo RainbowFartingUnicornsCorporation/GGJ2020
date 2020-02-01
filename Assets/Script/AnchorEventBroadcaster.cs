@@ -4,11 +4,19 @@ public class AnchorEventBroadcaster : MonoBehaviour
 {
     public AnchorBehaviour[] ObservedAnchors;
 
-    public void BoadcastDetach()
+    public void BroadcastDetach()
     {
         foreach (var anchor in ObservedAnchors)
         {
             anchor.DetachKey();
+        }
+    }
+
+    public void Kill()
+    {
+        foreach (var anchor in ObservedAnchors)
+        {
+            anchor.Kill();
         }
     }
 }

@@ -8,11 +8,13 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
 
 
     public Animator animator;
-    private int timeToHitSecondKey = 0;
     private KeyCode keyCode;
-    public int timeToWait = 10;
-    public int timeToHit = 20;
+    private float timeToHitSecondKey = 0;
+    public float timeToWait = 0.4f;
+    public float timeToHit = 1;
+    public AnchorEventBroadcaster aeb;
 
+    private bool playing = true;
 
 
     public AudioSource beat1;
@@ -36,6 +38,9 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     
     void Update()
     {
+        if (!playing)
+            return;
+
         // Try to Hit
         if (timeToHitSecondKey <= 0)
         {
@@ -47,7 +52,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
             {
                 timeBeforeStarting = 0;
             }
-            timeToHitSecondKey--;
+            timeToHitSecondKey -= Time.deltaTime;
         }
 
         //Wait a bit to start
@@ -69,8 +74,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         print(score);
         if (score < 0)
         {
-            animator.SetTrigger("Explode");
-            print("Perdu");
+            Lose();
         }
         else if (score > 30)
         {
@@ -88,6 +92,17 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     {
         // two condition to consider the hit after the beginning of the sound
         return Mathf.Abs(timePassed - secondBtwBeat) / secondBtwBeat <= deltaPush || timePassed / secondBtwBeat <= deltaPush;
+    }
+
+    void Lose()
+    {
+        if (!playing)
+            return;
+        playing = false;
+        animator.SetTrigger("Explode");
+        aeb.Kill();
+        print("Perdu");
+        
     }
 
     public void HitIt()

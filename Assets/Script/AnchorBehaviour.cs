@@ -6,20 +6,23 @@ public class AnchorBehaviour : MonoBehaviour
     public SpriteRenderer empty;
     public SpriteRenderer used;
 
+    private bool dead = false;
+
     private const string KEY = "Key";
 
     private Collider _keyCollider;
 
     void Update()
     {
+        if (dead)
+            return;
         if (_keyCollider != null)
         {
-
-            if (Input.GetKeyDown(KeyCode.Space))
+            /*if (Input.GetKeyDown(KeyCode.Space))
             {
                 DetachKey();
                 return;
-            }
+            }*/
 
             _keyCollider.gameObject.GetComponent<KeyBehaviour>().transform.eulerAngles = new Vector3(0, 0, 180);
 
@@ -38,6 +41,15 @@ public class AnchorBehaviour : MonoBehaviour
         empty.gameObject.SetActive(true);
         _keyCollider.gameObject.GetComponent<KeyBehaviour>().Detach();
         _keyCollider = null;
+    }
+
+    public virtual void Kill()
+    {
+        print("bbbbbbbbbb");
+        print(this);
+        DetachKey();
+        gameObject.SetActive(false);
+        dead = true;
     }
 
     void OnTriggerEnter(Collider collider)
