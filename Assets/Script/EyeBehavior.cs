@@ -49,7 +49,6 @@ public class EyeBehavior : MonoBehaviour, IInteraction
         {
             eyeOpenness += Time.deltaTime;
         }
-        //print(eyeOpenness);
         UpdateEyePosition();
     }
 }
