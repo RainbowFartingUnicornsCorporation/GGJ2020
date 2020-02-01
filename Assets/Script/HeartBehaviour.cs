@@ -15,7 +15,9 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
 
 
 
-    public AudioSource heartbeat;
+    public AudioSource beat1;
+    public AudioSource beat2;
+    public AudioSource bip;
     public float bpm = 60;
     public float acceleration = 5;
     public float deltaPush = 0.2f;
@@ -28,6 +30,8 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     {
         secondBtwBeat = 60.0f / bpm;
         score = 18;
+        beat1.volume = 10;
+        beat2.volume = 10;
     }
     
     void Update()
@@ -58,8 +62,8 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         {
             UpdateScore();
             flag = true;
-            PlayHeartbeat();
             timePassed = 0;
+            bip.Play();
         }
 
         print(score);
@@ -110,18 +114,13 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         }
     }
 
-    public void PlayHeartbeat()
-    {
-        heartbeat.Stop();
-        heartbeat.Play();
-    }
-
     public void KeyPressedAction(KeyCode kc)
     {
         if (timeToHitSecondKey == 0)
         {
             timeToHitSecondKey = timeToWait + timeToHit;
             keyCode = kc;
+            beat1.Play();
         }
         else if (keyCode != kc)
         {
@@ -129,6 +128,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
             {
                 animator.SetBool("Beat", true);
                 HitIt();
+                beat2.Play();
             }
             timeToHitSecondKey = 0;
         }
