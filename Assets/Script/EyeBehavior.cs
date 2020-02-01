@@ -37,6 +37,8 @@ public class EyeBehavior : MonoBehaviour
         if (Input.GetKeyDown(keyOpenEye))
         {
             eyeOpenness = eyeOpenness - eyeOpenness / 4;
+            if (eyeOpenness < 1.5)
+                eyeOpenness = 0;
         }
 
         if (eyeOpenness == 5)
