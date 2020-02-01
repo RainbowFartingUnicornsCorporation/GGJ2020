@@ -8,6 +8,9 @@ public class BlowBehaviour : MonoBehaviour
 
 
     public GameObject blowingTarget;
+    public AudioSource popSound;
+
+    public bool success;
 
     private string _device;
     private AudioClip _clipRecord;
@@ -20,6 +23,7 @@ public class BlowBehaviour : MonoBehaviour
         if (_device == null) _device = Microphone.devices[0];
         _clipRecord = Microphone.Start(_device, true, 999, 44100);
         currentPos = 0.0f;
+        success = false;
     }
 
     void StopMicrophone()
@@ -68,7 +72,12 @@ public class BlowBehaviour : MonoBehaviour
 
         if(currentPos > 8)
         {
-            print("KABOOOM"); // Success Event
+           // print("KABOOOM"); // Success Event
+            if (!success)
+            {
+                popSound.Play();
+                success = true;
+            }
             blowingTarget.GetComponent<Rigidbody>().velocity = new Vector3(5,0,0);
             blowingTarget.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 10);
         }
@@ -83,7 +92,7 @@ public class BlowBehaviour : MonoBehaviour
         
         if (cumulativeLoudnessLevel > 2)
         {
-            print(currentPos);
+          //  print(currentPos);
             currentPos += MicLoudness* 10 * Time.deltaTime;
         }
         
