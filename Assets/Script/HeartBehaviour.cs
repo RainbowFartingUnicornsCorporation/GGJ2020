@@ -65,6 +65,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         print(score);
         if (score < 0)
         {
+            animator.SetTrigger("Explode");
             print("Perdu");
         }
         else if (score > 30)
