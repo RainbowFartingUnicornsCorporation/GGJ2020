@@ -53,7 +53,7 @@ public class KeyBehaviour : MonoBehaviour
                     Mathf.Abs(_anchorCollider.transform.position.x - Camera.main.ScreenToWorldPoint(Input.mousePosition).x) < MAX_DISTANCE &&
                     Mathf.Abs(_anchorCollider.transform.position.y - Camera.main.ScreenToWorldPoint(Input.mousePosition).y) < MAX_DISTANCE;
 
-    void Detach()
+    public void Detach()
     {
         _keyRigidBody.useGravity = true;
     }
