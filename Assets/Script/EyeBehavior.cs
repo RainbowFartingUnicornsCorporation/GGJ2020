@@ -23,8 +23,9 @@ public class EyeBehavior : MonoBehaviour
 
     void UpdateEyePosition()
     {
-        Vector3 upPos = new Vector3(0, 10 - eyeOpenness, 0);
-        Vector3 downPos = new Vector3(0, -10 + eyeOpenness, 0);
+        float opennessFactor = 5 * (-1f * Mathf.Cos( Mathf.PI * eyeOpenness / 10) + 1f);
+        Vector3 upPos = new Vector3(0, 10 - opennessFactor, 0);
+        Vector3 downPos = new Vector3(0, -10 + opennessFactor, 0);
         upCube.transform.position = upPos;
         downCube.transform.position = downPos;
     }
@@ -33,13 +34,22 @@ public class EyeBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        eyeOpenness += Time.deltaTime;
-        print(eyeOpenness);
         if (Input.GetKeyDown(keyOpenEye))
         {
             eyeOpenness = eyeOpenness - eyeOpenness / 4;
         }
 
+        if (eyeOpenness == 5)
+            return; // Eye closed
+        if( eyeOpenness > 5)
+        {
+            eyeOpenness = 5;
+        }
+        else
+        {
+            eyeOpenness += Time.deltaTime;
+        }
+        print(eyeOpenness);
         UpdateEyePosition();
     }
 }
