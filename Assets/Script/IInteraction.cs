@@ -2,5 +2,5 @@
 
 public interface IInteraction
 {
-    void KeyPressedAction();
+    void KeyPressedAction(KeyCode kc);
 }

@@ -14,7 +14,7 @@ public class AnchorBehaviour : MonoBehaviour
         {
             if (Input.GetKeyDown(_keyCollider.gameObject.GetComponent<KeyBehaviour>().Value))
             {
-                ((IInteraction)Interaction).KeyPressedAction();
+                ((IInteraction)Interaction).KeyPressedAction(_keyCollider.gameObject.GetComponent<KeyBehaviour>().Value);
             }
 
             if (Input.GetKeyDown(KeyCode.Space))

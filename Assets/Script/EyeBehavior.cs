@@ -16,7 +16,7 @@ public class EyeBehavior : MonoBehaviour, IInteraction
         downCube = this.transform.GetChild(1).gameObject;
     }
 
-    public void KeyPressedAction()
+    public void KeyPressedAction(KeyCode kc)
     {
         eyeOpenness = eyeOpenness - eyeOpenness / 4;
         if (eyeOpenness < 1.5)
@@ -49,7 +49,7 @@ public class EyeBehavior : MonoBehaviour, IInteraction
         {
             eyeOpenness += Time.deltaTime;
         }
-        print(eyeOpenness);
+        //print(eyeOpenness);
         UpdateEyePosition();
     }
 }
