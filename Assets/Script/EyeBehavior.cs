@@ -2,7 +2,6 @@
 
 public class EyeBehavior : MonoBehaviour, IInteraction
 {
-    public KeyCode keyOpenEye;
     public AnchorEventBroadcaster anchorEventBroadcaster;
 
     private GameObject upCube;
