@@ -74,7 +74,6 @@ public class BlowBehaviour : MonoBehaviour
         blowingTarget.transform.localScale = new Vector3(currentScale + 0.3f * MicLoudness * Mathf.Cos(rand1), currentScale + 0.3f * MicLoudness * Mathf.Cos(rand2), 1); ;
 
 
-        earSprite.SetFloat("AnimationSpeed", cumulativeLoudnessLevel);
 
         if (currentScale > 1)
         {
@@ -83,18 +82,15 @@ public class BlowBehaviour : MonoBehaviour
             {
                 popSound.Play();
                 success = true;
-                earSprite.SetBool("success", true);
+                earSprite.SetFloat("AnimationSpeed", 0.0f);
             }
             blowingTarget.GetComponent<Rigidbody>().velocity = new Vector3(5,0,0);
             blowingTarget.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 10);
         }
         else
         {
-           // blowingTarget.transform.position = new Vector3(-4 + currentScale, 0, 0);
-          /*  var rot = blowingTarget.transform.rotation;
-            rot.z = Mathf.Cos(currentScale);
-            blowingTarget.transform.rotation = rot;
-            blowingTarget.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;*/
+            
+            earSprite.SetFloat("AnimationSpeed", cumulativeLoudnessLevel);
         }
         
            currentScale += MicLoudness * Time.deltaTime;
