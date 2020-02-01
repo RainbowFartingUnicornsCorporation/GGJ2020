@@ -23,9 +23,11 @@ public class AnchorBehaviour : MonoBehaviour
             }
         }
     }
-
+    //TODO bug quand la touche est tenue par le joueur sur le collider de l'ancre
     public void DetachKey()
     {
+        if (!_keyCollider)
+            return;
         _keyCollider.gameObject.GetComponent<KeyBehaviour>().Detach();
         _keyCollider = null;
     }

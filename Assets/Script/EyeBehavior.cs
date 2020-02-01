@@ -6,7 +6,7 @@ public class EyeBehavior : MonoBehaviour, IInteraction
 
     private GameObject upCube;
     private GameObject downCube;
-    private float eyeOpenness;
+    public float eyeOpenness;
 
 
     // Start is called before the first frame update
@@ -14,7 +14,6 @@ public class EyeBehavior : MonoBehaviour, IInteraction
     {
         upCube = this.transform.GetChild(0).gameObject;
         downCube = this.transform.GetChild(1).gameObject;
-        eyeOpenness = 0;
     }
 
     public void KeyPressedAction()
@@ -50,7 +49,7 @@ public class EyeBehavior : MonoBehaviour, IInteraction
         {
             eyeOpenness += Time.deltaTime;
         }
-        //print(eyeOpenness);
+        print(eyeOpenness);
         UpdateEyePosition();
     }
 }

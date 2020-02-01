@@ -728,6 +728,11 @@ PrefabInstance:
       propertyPath: anchorEventBroadcaster
       value: 
       objectReference: {fileID: 929268643}
+    - target: {fileID: 6359219979452932138, guid: feef2f56edcb0bd449dfa181d67563e0,
+        type: 3}
+      propertyPath: eyeOpenness
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6359219979452932139, guid: feef2f56edcb0bd449dfa181d67563e0,
         type: 3}
       propertyPath: m_LocalPosition.x
