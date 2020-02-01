@@ -15,11 +15,6 @@ public class KeyBehaviour : MonoBehaviour
         _keyRigidBody = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-
-    }
-
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == ANCHOR)

@@ -2,21 +2,24 @@
 
 public class AnchorBehaviour : MonoBehaviour
 {
+    public IInteraction Interaction;
+
     private const string KEY = "Key";
 
     private Collider _keyCollider;
 
     void Update()
     {
-        if (_keyCollider != null && Input.GetKeyDown((KeyCode)_keyCollider.gameObject.GetComponent<KeyBehaviour>().Value))
+        if (_keyCollider != null)
         {
-            print("It works !");
-        }
+            if (Input.GetKeyDown((KeyCode)_keyCollider.gameObject.GetComponent<KeyBehaviour>().Value))
+                Interaction.KeyPressedAction();
 
-        if (_keyCollider != null && Input.GetKeyDown(KeyCode.Space))
-        {
-            _keyCollider.gameObject.GetComponent<KeyBehaviour>().Detach();
-            _keyCollider = null;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _keyCollider.gameObject.GetComponent<KeyBehaviour>().Detach();
+                _keyCollider = null;
+            }
         }
     }
 
