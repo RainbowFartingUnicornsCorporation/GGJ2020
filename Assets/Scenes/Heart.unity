@@ -672,7 +672,7 @@ MonoBehaviour:
   heartbeat: {fileID: 1597039658}
   bpm: 60
   acceleration: 5
-  deltaPush: 0.2
+  deltaPush: 0.5
 --- !u!4 &1163391831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3727846287275274575, guid: eaa380bfdbe87b1479d9cacb6e35a842,
