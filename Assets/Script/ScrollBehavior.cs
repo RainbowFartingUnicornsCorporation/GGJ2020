@@ -9,14 +9,15 @@ public class ScrollBehavior : MonoBehaviour
     public AudioSource friction_2;
     public float penality;
     public float winCoefficient;
-
+    public Animator earStickAnimator;
+    
     private float score;
 
 
 
     void ComputeScore(float scrollScore)
     {
-        print(score);
+        //print(score);
         if(scrollScore == 0f)
         {
             score -= penality;
@@ -39,16 +40,26 @@ public class ScrollBehavior : MonoBehaviour
     void Update()
     {
         float scrollScore = Input.GetAxis("Mouse ScrollWheel");
-        ComputeScore(Mathf.Abs(scrollScore) * winCoefficient);
+        float localScore = Mathf.Abs(scrollScore) * winCoefficient;
+        ComputeScore(localScore);
         if (!friction_1.isPlaying && !friction_2.isPlaying)
         {
             if (scrollScore > 0f)
             {
                 friction_1.Play();
-            } else if (scrollScore < 0f)
+
+            }
+            else if (scrollScore < 0f)
             {
                 friction_2.Play();
             }
+        }
+        print(score);
+        earStickAnimator.SetFloat("speedEarStickAnim", localScore / 2);
+
+        if (score >= 200)
+        {
+            earStickAnimator.SetBool("stickOut", true);
         }
     }
 }
