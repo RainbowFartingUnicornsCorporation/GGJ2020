@@ -84,7 +84,7 @@ public class BlowBehaviour : MonoBehaviour
 
                 StartCoroutine(Success());
             }
-            blowingTarget.GetComponent<Rigidbody>().velocity = new Vector3(5,0,0);
+            blowingTarget.GetComponent<Rigidbody>().velocity = new Vector3(2,4,0);
             blowingTarget.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 10);
         }
         else
