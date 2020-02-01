@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EyeBehavior : MonoBehaviour
+public class EyeBehavior : IInteraction
 {
     private GameObject upCube;
     private GameObject downCube;
     public KeyCode keyOpenEye;
-
     private float eyeOpenness;
-    public int test;
 
 
     // Start is called before the first frame update
@@ -20,6 +18,12 @@ public class EyeBehavior : MonoBehaviour
         eyeOpenness = 0;
     }
 
+    void KeyPressedAction()
+    {
+        eyeOpenness = eyeOpenness - eyeOpenness / 4;
+        if (eyeOpenness < 1.5)
+            eyeOpenness = 0;
+    }
 
     void UpdateEyePosition()
     {
