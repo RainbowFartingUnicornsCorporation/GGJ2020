@@ -20,6 +20,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     public AudioSource beat1;
     public AudioSource beat2;
     public AudioSource bip;
+    public AudioSource death;
     public float bpm = 60;
     public float acceleration = 5;
     public float deltaPush = 0.2f;
@@ -98,6 +99,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     {
         if (!playing)
             return;
+        death.Play();
         playing = false;
         animator.SetTrigger("Explode");
         aeb.Kill();
