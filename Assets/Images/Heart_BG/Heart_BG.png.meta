@@ -6,6 +6,12 @@ TextureImporter:
     21300002: Heart_BG_1
     21300004: Heart_BG_2
     21300006: Heart_BG_3
+    21300008: Heart_BG_4
+    21300010: Heart_BG_5
+    21300012: Heart_BG_6
+    21300014: Heart_BG_7
+    21300016: Heart_BG_8
+    21300018: Heart_BG_9
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -46,7 +52,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -103,6 +109,106 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 1080
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a94d93ddaea592a44840a44c3e4712f7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart_BG_1
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1080
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b32b04da27743c248823c646a620a653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart_BG_2
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 1080
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bc75fc8bbf6e7e46bb5d6293ac5e50e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart_BG_3
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 1080
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a2a4cb3d1f4517429156ffd777d94f4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart_BG_4
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 1080
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4d3d5463ff13aa43817304118882e60
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart_BG_5
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 1920
         height: 1080
@@ -113,13 +219,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 906837bdf7e91a448b9caf9e25a9a6f5
+      spriteID: 3c726581da5384b4ea13f5450e74c959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Heart_BG_1
+      name: Heart_BG_6
       rect:
         serializedVersion: 2
         x: 1920
@@ -133,13 +239,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6460bcbf71573944f8cf81c6983d6a77
+      spriteID: c6732e760c7e7f44aaa9cbbc5bea684a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Heart_BG_2
+      name: Heart_BG_7
       rect:
         serializedVersion: 2
         x: 3840
@@ -153,13 +259,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9287ed13e20afa944ba6455ae97615a9
+      spriteID: c8bb6fd0b271bb349bbe876910f28290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Heart_BG_3
+      name: Heart_BG_8
       rect:
         serializedVersion: 2
         x: 5760
@@ -173,7 +279,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5b62e9bb5ba7194e983b18bc13ae6cc
+      spriteID: cb640b3b87a366e4f9a1b6ff51705817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart_BG_9
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 0
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8246878787c9a2a42bb1915d52f39705
       vertices: []
       indices: 
       edges: []
@@ -181,7 +307,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9b68923235db20f469c34307e57e98ee
+    spriteID: 3039fb5218dc45c4e8bd45d6b03a5ea0
     vertices: []
     indices: 
     edges: []
