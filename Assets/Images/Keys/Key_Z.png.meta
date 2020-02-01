@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: bbb56cc1abc580e43b306944924a1e29
+=======
+guid: b73f1b5d951917341acf61e8de9f5e45
+>>>>>>> Add heartbeat test (WIP)
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -75,7 +79,11 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
+<<<<<<< HEAD
     spriteID: 14459c76e63083d43acd44567cc2b6aa
+=======
+    spriteID: af209cad07fe9104184ab6419fb9a5e1
+>>>>>>> Add heartbeat test (WIP)
     vertices: []
     indices: 
     edges: []

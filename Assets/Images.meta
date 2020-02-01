@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: e835174b3dbad1949bc28ebeccfc5e19
+=======
+guid: a7fb0b3f323924a46961d143996cc80d
+>>>>>>> Add heartbeat test (WIP)
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
