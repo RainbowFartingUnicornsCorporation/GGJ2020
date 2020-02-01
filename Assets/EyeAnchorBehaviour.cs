@@ -8,7 +8,6 @@ public class EyeAnchorBehaviour : AnchorBehaviour
 
     public override void Kill()
     {
-        print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         floor.enabled = false;
         base.Kill();
     }

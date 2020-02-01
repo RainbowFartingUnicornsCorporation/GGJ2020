@@ -45,8 +45,6 @@ public class AnchorBehaviour : MonoBehaviour
 
     public virtual void Kill()
     {
-        print("bbbbbbbbbb");
-        print(this);
         DetachKey();
         gameObject.SetActive(false);
         dead = true;
