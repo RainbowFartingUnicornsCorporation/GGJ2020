@@ -9,6 +9,7 @@ public class BlowBehaviour : MonoBehaviour
 
     public GameObject blowingTarget;
     public AudioSource popSound;
+    public AudioSource eeaaaahSound;
     public Animator earSprite;
 
     public bool success;
@@ -72,7 +73,7 @@ public class BlowBehaviour : MonoBehaviour
         float rand1 = Random.Range(0.0f, Mathf.PI);
         float rand2 = Random.Range(0.0f, Mathf.PI);
         blowingTarget.transform.localScale = new Vector3(currentScale + 0.3f * MicLoudness * Mathf.Cos(rand1), currentScale + 0.3f * MicLoudness * Mathf.Cos(rand2), 1); ;
-
+        
 
 
         if (currentScale > 1)
@@ -80,9 +81,8 @@ public class BlowBehaviour : MonoBehaviour
            // print("KABOOOM"); // Success Event
             if (!success)
             {
-                popSound.Play();
-                success = true;
-                earSprite.SetFloat("AnimationSpeed", 0.0f);
+
+                StartCoroutine(Success());
             }
             blowingTarget.GetComponent<Rigidbody>().velocity = new Vector3(5,0,0);
             blowingTarget.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 10);
@@ -98,6 +98,18 @@ public class BlowBehaviour : MonoBehaviour
         
 
     }
+
+    IEnumerator Success()
+    {
+        popSound.Play();
+        success = true;
+        earSprite.SetFloat("AnimationSpeed", 0.0f);
+        yield return new WaitForSeconds(0.2f);
+        eeaaaahSound.Play();
+    }
+
+
+
 
     bool _isInitialized;
     // start mic when scene starts
