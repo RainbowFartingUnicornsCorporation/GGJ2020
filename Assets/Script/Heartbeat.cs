@@ -52,6 +52,20 @@ public class Heartbeat : MonoBehaviour
         return Mathf.Abs(timePassed-secondBtwBeat)/secondBtwBeat <= deltaPush || timePassed/secondBtwBeat <= deltaPush;
     }
 
+    void EndCondition()
+    {
+        if (score < 0)
+        {
+            Time.timeScale = 0;
+            print("NOP");
+        }
+        else if (score > 30)
+        {
+            Time.timeScale = 0;
+            print("YEP");
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -78,18 +92,10 @@ public class Heartbeat : MonoBehaviour
             //TODO animation to push
         }
 
+        EndCondition();
+
         //print(score);
         //print(bpm);
-
-        if(score < 0)
-        {
-            Time.timeScale = 0;
-            print("NOP");
-        } else if (score > 30)
-        {
-            Time.timeScale = 0;
-            print("YEP");
-        }
 
     }
 }
