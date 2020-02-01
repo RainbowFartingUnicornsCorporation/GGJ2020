@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EyeBehavior : MonoBehaviour, IInteraction
 {
+    public KeyCode keyOpenEye;
+    public AnchorEventBroadcaster anchorEventBroadcaster;
+
     private GameObject upCube;
     private GameObject downCube;
-    public KeyCode keyOpenEye;
     private float eyeOpenness;
 
 
@@ -27,7 +27,7 @@ public class EyeBehavior : MonoBehaviour, IInteraction
 
     void UpdateEyePosition()
     {
-        float opennessFactor = 5 * (-1f * Mathf.Cos( Mathf.PI * eyeOpenness / 10) + 1f);
+        float opennessFactor = 5 * (-1f * Mathf.Cos(Mathf.PI * eyeOpenness / 10) + 1f);
         Vector3 upPos = new Vector3(0, 10 - opennessFactor, 5);
         Vector3 downPos = new Vector3(0, -10 + opennessFactor, 5);
         upCube.transform.position = upPos;
@@ -38,11 +38,13 @@ public class EyeBehavior : MonoBehaviour, IInteraction
     // Update is called once per frame
     void Update()
     {
-        
         if (eyeOpenness == 5)
-            return; // Eye closed
-        if( eyeOpenness > 5)
         {
+            return; // Eye closed
+        }
+        if (eyeOpenness > 5)
+        {
+            anchorEventBroadcaster.BoadcastDetach();
             eyeOpenness = 5;
         }
         else

@@ -19,10 +19,15 @@ public class AnchorBehaviour : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                _keyCollider.gameObject.GetComponent<KeyBehaviour>().Detach();
-                _keyCollider = null;
+                DetachKey();
             }
         }
+    }
+
+    public void DetachKey()
+    {
+        _keyCollider.gameObject.GetComponent<KeyBehaviour>().Detach();
+        _keyCollider = null;
     }
 
     void OnTriggerEnter(Collider collider)
