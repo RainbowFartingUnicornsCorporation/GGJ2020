@@ -2,7 +2,7 @@
 
 public class AnchorBehaviour : MonoBehaviour
 {
-    public IInteraction Interaction;
+    public MonoBehaviour Interaction;
 
     private const string KEY = "Key";
 
@@ -12,8 +12,10 @@ public class AnchorBehaviour : MonoBehaviour
     {
         if (_keyCollider != null)
         {
-            if (Input.GetKeyDown((KeyCode)_keyCollider.gameObject.GetComponent<KeyBehaviour>().Value))
-                Interaction.KeyPressedAction();
+            if (Input.GetKeyDown(_keyCollider.gameObject.GetComponent<KeyBehaviour>().Value))
+            {
+                ((IInteraction)Interaction).KeyPressedAction();
+            }
 
             if (Input.GetKeyDown(KeyCode.Space))
             {

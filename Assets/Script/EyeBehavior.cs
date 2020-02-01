@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EyeBehavior : IInteraction
+public class EyeBehavior : MonoBehaviour, IInteraction
 {
     private GameObject upCube;
     private GameObject downCube;
@@ -18,7 +18,7 @@ public class EyeBehavior : IInteraction
         eyeOpenness = 0;
     }
 
-    void KeyPressedAction()
+    public void KeyPressedAction()
     {
         eyeOpenness = eyeOpenness - eyeOpenness / 4;
         if (eyeOpenness < 1.5)
@@ -28,8 +28,8 @@ public class EyeBehavior : IInteraction
     void UpdateEyePosition()
     {
         float opennessFactor = 5 * (-1f * Mathf.Cos( Mathf.PI * eyeOpenness / 10) + 1f);
-        Vector3 upPos = new Vector3(0, 10 - opennessFactor, 0);
-        Vector3 downPos = new Vector3(0, -10 + opennessFactor, 0);
+        Vector3 upPos = new Vector3(0, 10 - opennessFactor, 5);
+        Vector3 downPos = new Vector3(0, -10 + opennessFactor, 5);
         upCube.transform.position = upPos;
         downCube.transform.position = downPos;
     }
@@ -38,13 +38,7 @@ public class EyeBehavior : IInteraction
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(keyOpenEye))
-        {
-            eyeOpenness = eyeOpenness - eyeOpenness / 4;
-            if (eyeOpenness < 1.5)
-                eyeOpenness = 0;
-        }
-
+        
         if (eyeOpenness == 5)
             return; // Eye closed
         if( eyeOpenness > 5)
@@ -55,7 +49,7 @@ public class EyeBehavior : IInteraction
         {
             eyeOpenness += Time.deltaTime;
         }
-        print(eyeOpenness);
+        //print(eyeOpenness);
         UpdateEyePosition();
     }
 }

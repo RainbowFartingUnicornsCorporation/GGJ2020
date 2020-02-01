@@ -2,7 +2,7 @@
 
 public class KeyBehaviour : MonoBehaviour
 {
-    public char Value;
+    public KeyCode Value;
 
     private int MAX_DISTANCE = 1;
     private const string ANCHOR = "Anchor";
