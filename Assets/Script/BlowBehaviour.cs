@@ -104,7 +104,7 @@ public class BlowBehaviour : MonoBehaviour
         popSound.Play();
         success = true;
         earSprite.SetFloat("AnimationSpeed", 0.0f);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         eeaaaahSound.Play();
     }
 
