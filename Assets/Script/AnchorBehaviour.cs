@@ -3,6 +3,8 @@
 public class AnchorBehaviour : MonoBehaviour
 {
     public MonoBehaviour Interaction;
+    public SpriteRenderer empty;
+    public SpriteRenderer used;
 
     private const string KEY = "Key";
 
@@ -12,14 +14,18 @@ public class AnchorBehaviour : MonoBehaviour
     {
         if (_keyCollider != null)
         {
-            if (Input.GetKeyDown(_keyCollider.gameObject.GetComponent<KeyBehaviour>().Value))
-            {
-                ((IInteraction)Interaction).KeyPressedAction(_keyCollider.gameObject.GetComponent<KeyBehaviour>().Value);
-            }
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 DetachKey();
+                return;
+            }
+
+            _keyCollider.gameObject.GetComponent<KeyBehaviour>().transform.eulerAngles = new Vector3(0, 0, 180);
+
+            if (Input.GetKeyDown(_keyCollider.gameObject.GetComponent<KeyBehaviour>().Value))
+            {
+                ((IInteraction)Interaction).KeyPressedAction(_keyCollider.gameObject.GetComponent<KeyBehaviour>().Value);
             }
         }
     }
@@ -28,6 +34,8 @@ public class AnchorBehaviour : MonoBehaviour
     {
         if (!_keyCollider)
             return;
+        used.gameObject.SetActive(false);
+        empty.gameObject.SetActive(true);
         _keyCollider.gameObject.GetComponent<KeyBehaviour>().Detach();
         _keyCollider = null;
     }
@@ -35,12 +43,21 @@ public class AnchorBehaviour : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == KEY)
+        {
             _keyCollider = collider;
+
+            used.gameObject.SetActive(true);
+            empty.gameObject.SetActive(false);
+        }
     }
 
     void OnTriggerExit(Collider collider)
     {
         if (collider.gameObject.tag == KEY)
+        {
             _keyCollider = null;
+            used.gameObject.SetActive(false);
+            empty.gameObject.SetActive(true);
+        }
     }
 }
