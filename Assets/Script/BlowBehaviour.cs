@@ -9,21 +9,25 @@ public class BlowBehaviour : MonoBehaviour
 
     public GameObject blowingTarget;
     public AudioSource popSound;
+    public Animator earSprite;
 
     public bool success;
 
     private string _device;
     private AudioClip _clipRecord;
-    private float currentPos;
+    private float currentScale;
     private float cumulativeLoudnessLevel;
+
+    public float specAnimationSpeed;
 
     //mic initialization
     void InitMic()
     {
         if (_device == null) _device = Microphone.devices[0];
         _clipRecord = Microphone.Start(_device, true, 999, 44100);
-        currentPos = 0.0f;
+        currentScale = 0.1f;
         success = false;
+        specAnimationSpeed = 0.0f;
     }
 
     void StopMicrophone()
@@ -59,42 +63,42 @@ public class BlowBehaviour : MonoBehaviour
     void Update()
     {
         // levelMax equals to the highest normalized value power 2, a small number because < 1
-        // pass the value to a static var so we can access it from anywhere
-        MicLoudness = LevelMax();
+        // pass the value to a static var so we can access it from anywher
+        MicLoudness = LevelMax(); 
         cumulativeLoudnessLevel += (MicLoudness * 10 -  cumulativeLoudnessLevel/2) * Time.deltaTime;
 
 
         Vector3 scaleChange = new Vector3(1 + 2 * MicLoudness,1, 1);
         float rand1 = Random.Range(0.0f, Mathf.PI);
         float rand2 = Random.Range(0.0f, Mathf.PI);
-        blowingTarget.transform.localScale = new Vector3(1 + 0.6f * MicLoudness * Mathf.Cos(rand1), 1 + 0.6f * MicLoudness * Mathf.Cos(rand2), 1); ;
-        
+        blowingTarget.transform.localScale = new Vector3(currentScale + 0.3f * MicLoudness * Mathf.Cos(rand1), currentScale + 0.3f * MicLoudness * Mathf.Cos(rand2), 1); ;
 
-        if(currentPos > 8)
+
+        earSprite.SetFloat("AnimationSpeed", cumulativeLoudnessLevel);
+
+        if (currentScale > 1)
         {
            // print("KABOOOM"); // Success Event
             if (!success)
             {
                 popSound.Play();
                 success = true;
+                earSprite.SetBool("success", true);
             }
             blowingTarget.GetComponent<Rigidbody>().velocity = new Vector3(5,0,0);
             blowingTarget.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 10);
         }
         else
         {
-            blowingTarget.transform.position = new Vector3(-4 + currentPos, 0, 0);
-            var rot = blowingTarget.transform.rotation;
-            rot.z = Mathf.Cos(currentPos/3);
+           // blowingTarget.transform.position = new Vector3(-4 + currentScale, 0, 0);
+          /*  var rot = blowingTarget.transform.rotation;
+            rot.z = Mathf.Cos(currentScale);
             blowingTarget.transform.rotation = rot;
-            blowingTarget.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            blowingTarget.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;*/
         }
         
-        if (cumulativeLoudnessLevel > 2)
-        {
-          //  print(currentPos);
-            currentPos += MicLoudness* 10 * Time.deltaTime;
-        }
+           currentScale += MicLoudness * Time.deltaTime;
+        
         
 
     }
