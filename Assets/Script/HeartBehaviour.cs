@@ -39,7 +39,10 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     void Start()
     {
         secondBtwBeat = 60.0f / bpm;
-
+        if (PlayerPrefs.GetInt("BrainWon", 0) == 0)
+        {
+            particle.SetActive(false);
+        }
     }
     
     void Update()
@@ -102,10 +105,17 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
             Lose();
     }
 
+    void Decelerate()
+    {
+        if (bpm > 80)
+        bpm -= bpm * (acceleration / 100);
+        secondBtwBeat = 60.0f / bpm;
+    }
+
     bool HasCorrectlyHit()
     {
+        return timePassed > secondBtwBeat / 2 - deltaPush * secondBtwBeat && timePassed < secondBtwBeat / 2 + deltaPush * secondBtwBeat;
         // two condition to consider the hit after the beginning of the sound
-        return timePassed > secondBtwBeat / 2 - deltaPush && timePassed < secondBtwBeat / 2 + deltaPush;
         //return (secondBtwBeat - timePassed) / secondBtwBeat <= deltaPush || timePassed / secondBtwBeat <= deltaPush;
     }
 
@@ -126,6 +136,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     {
         if (HasCorrectlyHit())
         {
+            Decelerate();
             score++;
             flag = false;
             animator.SetBool("Beat", true);
