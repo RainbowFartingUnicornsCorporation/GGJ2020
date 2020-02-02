@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class HeartBehaviour : MonoBehaviour, IInteraction
 {
-    public float timeBeforeStarting = 20;
-
-
     public Animator animator;
     private KeyCode keyCode;
     private float timeToHitSecondKey = 0;
@@ -15,6 +12,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     public AnchorEventBroadcaster aeb;
 
     private bool playing = true;
+    private bool notStarted = true;
 
 
     public AudioSource beat1;
@@ -51,17 +49,16 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         }
         else
         {
-            if (timeBeforeStarting > 0)
+            if (notStarted)
             {
-                timeBeforeStarting = 0;
+                notStarted = false;
             }
             timeToHitSecondKey -= Time.deltaTime;
         }
 
         //Wait a bit to start
-        if (timeBeforeStarting > 0 && timeToHitSecondKey == 0)
+        if (notStarted)
         {
-            timeBeforeStarting -= Time.deltaTime;
             return;
         }
 
