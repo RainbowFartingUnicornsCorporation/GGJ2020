@@ -14,6 +14,8 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     private bool playing = true;
     private bool notStarted = true;
 
+    public int goal = 5;
+
 
     public AudioSource beat1;
     public AudioSource beat2;
@@ -25,12 +27,12 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     private float secondBtwBeat;
     private float timePassed;
     private bool flag;
-    private int score;
+
+    private int score = 0;
     
     void Start()
     {
         secondBtwBeat = 60.0f / bpm;
-        score = 18;
         beat1.volume = 10;
         beat2.volume = 10;
     }
@@ -65,18 +67,18 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         timePassed += Time.deltaTime;
         if (timePassed > secondBtwBeat)
         {
-            UpdateScore();
+            if (flag)
+            {
+                Accelerate();
+                score = 0;
+            }
             flag = true;
             timePassed = 0;
             bip.Play();
         }
 
         print(score);
-        if (score < 0)
-        {
-            Lose();
-        }
-        else if (score > 30)
+        if (score >= goal)
         {
             print("Gagné");
         }
@@ -86,11 +88,14 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     {
         bpm += bpm * (acceleration / 100);
         secondBtwBeat = 60.0f / bpm;
+        if (bpm > 210)
+            Lose();
     }
 
     bool HasCorrectlyHit()
     {
         // two condition to consider the hit after the beginning of the sound
+        //return (secondBtwBeat - timePassed - 2 * timeToHitSecondKey) / secondBtwBeat <= deltaPush || timePassed - 2 * timeToHitSecondKey / secondBtwBeat <= deltaPush;
         return (secondBtwBeat - timePassed) / secondBtwBeat <= deltaPush || timePassed / secondBtwBeat <= deltaPush;
     }
 
@@ -110,6 +115,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     {
         if (HasCorrectlyHit())
         {
+            score++;
             flag = false;
             animator.SetBool("Beat", true);
             beat2.Play();
@@ -117,20 +123,9 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         }
         else
         {
+            score = 0;
             Accelerate();
             print("FAILED");
-        }
-    }
-
-    void UpdateScore()
-    {
-        if (flag)
-        {
-            score -= 1;
-        }
-        else
-        {
-            score += 1;
         }
     }
 

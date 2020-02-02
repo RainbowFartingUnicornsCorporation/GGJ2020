@@ -620,18 +620,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45f075e51fdf9542895da13617b973c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeStarting: 20
   animator: {fileID: 1163391832}
-  timeToWait: 0.2
-  timeToHit: 1
+  timeToWait: 0
+  timeToHit: 0.7
   aeb: {fileID: 929268643}
+  goal: 5
   beat1: {fileID: 370584726}
   beat2: {fileID: 1548803556}
   bip: {fileID: 1578818999}
   death: {fileID: 649741580}
   bpm: 40
-  acceleration: 5
-  deltaPush: 0.2
+  acceleration: 6
+  deltaPush: 0.3
 --- !u!4 &1163391831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3727846287275274575, guid: eaa380bfdbe87b1479d9cacb6e35a842,
