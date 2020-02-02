@@ -1,25 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PathDrawer2 : MonoBehaviour
+public class VisualHeartBeat : MonoBehaviour
 {
     public List<Transform> path_objs = new List<Transform>();
     Transform[] transforms;
-
-    public float GetSize()
-    {
-        float totalDistance = 0;
-        Transform previous = null;
-        foreach (var path_obj in path_objs)
-        {
-            if (previous)
-            {
-                totalDistance += Vector3.Distance(previous.position, path_obj.position);
-            }
-            previous = path_obj;
-        }
-        return totalDistance;
-    }
 
     void OnDrawGizmos()
     {

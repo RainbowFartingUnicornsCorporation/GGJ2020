@@ -20,6 +20,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
 
     public int goal = 5;
 
+    public HeartbeatPathFollower hpf;
 
     public AudioSource beat1;
     public AudioSource beat2;
@@ -68,18 +69,16 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
             return;
         }
 
-        timePassed += Time.deltaTime;
+        timePassed += Time.deltaTime;/*
         float percentage = timePassed / secondBtwBeat;
         float diffX = anchorRight.position.x - anchorLeft.position.x;
         float diffY = anchorRight.position.y - anchorLeft.position.y;
         float x = anchorLeft.position.x - diffX + percentage * 2 * diffX;
         float y = anchorLeft.position.y - diffY + percentage * 2 * diffY;
 
+        particle.gameObject.transform.position = new Vector3(x, y, 0);*/
 
-        //float x = (timePassed / secondBtwBeat) * (anchorLeft.position.y) 
-        //float x = (anchorLeft.position.x + anchorRight.position.x) / 2 + timePassed/secondBtwBeat * diffX - diffX;// / (timePassed / secondBtwBeat);
-        //float y = (anchorLeft.position.y + anchorRight.position.y) / 2;// / (timePassed / secondBtwBeat);
-        particle.gameObject.transform.position = new Vector3(x, y, 0);
+        hpf.timeToTravel = secondBtwBeat;
 
         print(particle.gameObject.transform.position);
 
@@ -93,6 +92,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
             flag = true;
             timePassed = 0;
             bip.Play();
+            hpf.Enable();
         }
 
         //print(score);
@@ -124,6 +124,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         playing = false;
         animator.SetTrigger("Explode");
         aeb.Kill();
+        hpf.Disable();
         print("Perdu");
         
     }
@@ -153,6 +154,8 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
             timeToHitSecondKey = timeToWait + timeToHit;
             keyCode = kc;
             beat1.Play();
+            hpf.timeToTravel = secondBtwBeat;
+            hpf.Enable();
         }
         else if (keyCode != kc)
         {
