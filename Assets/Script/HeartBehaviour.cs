@@ -99,6 +99,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
 
     void Accelerate()
     {
+        animator.SetTrigger("Suffer");
         bpm += bpm * (acceleration / 100);
         secondBtwBeat = 60.0f / bpm;
         if (bpm > 210)
@@ -110,6 +111,8 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         if (bpm > 80)
         bpm -= bpm * (acceleration / 100);
         secondBtwBeat = 60.0f / bpm;
+        if (bpm > 210)
+            Lose();
     }
 
     bool HasCorrectlyHit()

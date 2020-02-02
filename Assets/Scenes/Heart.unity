@@ -814,6 +814,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heart
       objectReference: {fileID: 0}
+    - target: {fileID: 3727846287275274574, guid: eaa380bfdbe87b1479d9cacb6e35a842,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300002, guid: d3f3c3c9d1ef61b4584a2f09a6d5f489,
+        type: 3}
     - target: {fileID: 3727846287275274575, guid: eaa380bfdbe87b1479d9cacb6e35a842,
         type: 3}
       propertyPath: m_LocalPosition.x
