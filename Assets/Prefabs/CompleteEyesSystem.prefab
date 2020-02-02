@@ -285,7 +285,7 @@ PrefabInstance:
     - target: {fileID: 1090816781354813652, guid: 0a51226bfcc7cd94e9aafb30d13700e2,
         type: 3}
       propertyPath: ObservedAnchors.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1090816781354813652, guid: 0a51226bfcc7cd94e9aafb30d13700e2,
         type: 3}
