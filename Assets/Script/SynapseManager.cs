@@ -1,16 +1,49 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SynapseManager : MonoBehaviour
 {
     public SynapseActivation[] synapses;
+    private bool win;
+
+    void Start()
+    {
+        win = false;
+    }
+
+
+    IEnumerator Success()
+    {
+        // Pop.Play();
+        yield return new WaitForSeconds(0.3f);
+        // eeaaaahSound.Play();
+
+        PlayerPrefs.SetInt("BrainWon", 1);
+        PlayerPrefs.Save();
+
+
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene("Start", LoadSceneMode.Single);
+    }
+
+
 
     private void Update()
     {
-        foreach(var synapse in synapses)
+        if (!win)
         {
-            if (!synapse.isActivated)
-                return;
+            foreach (var synapse in synapses)
+            {
+                if (!synapse.isActivated)
+                    return;
+            }
+            print("win");
+
+            StartCoroutine(Success());
         }
-        print("win");
+       
+       
     }
 }
