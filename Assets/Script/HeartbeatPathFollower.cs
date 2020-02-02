@@ -59,34 +59,6 @@ public class HeartbeatPathFollower : MonoBehaviour
                 }
                 nextPosition = pathToFollow.path_objs[CurrentWayPointId + 1].position;
             }
-        }
-        /*
-
-        //var lastPosition = pathToFollow.path_objs[CurrentWayPointId].position;
-        var nextPosition = pathToFollow.path_objs[CurrentWayPointId + 1].position;
-        //distance = Vector3.Distance(lastPosition, nextPosition);
-
-        if (CurrentWayPointId + 1 >= pathToFollow.path_objs.Count)
-        {
-            CurrentWayPointId = 0;
-            transform.position = new Vector3(pathToFollow.path_objs[0].position.x, pathToFollow.path_objs[0].position.y, transform.position.z);
-        }
-        else
-        {
-            float speed = pathSize / timeToTravel;
-
-            float availableDistance = Time.deltaTime * speed;
-            float distance = Vector3.Distance(transform.position, nextPosition);
-            while (availableDistance > 0)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, nextPosition, distance);
-                availableDistance -= distance;
-                if (transform.position == nextPosition)
-                {
-                    CurrentWayPointId++;
-                    nextPosition = pathToFollow.path_objs[CurrentWayPointId + 1].position;
-                }
-            }
-        }  */          
+        }     
     }
 }

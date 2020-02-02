@@ -69,19 +69,10 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
             return;
         }
 
-        timePassed += Time.deltaTime;/*
-        float percentage = timePassed / secondBtwBeat;
-        float diffX = anchorRight.position.x - anchorLeft.position.x;
-        float diffY = anchorRight.position.y - anchorLeft.position.y;
-        float x = anchorLeft.position.x - diffX + percentage * 2 * diffX;
-        float y = anchorLeft.position.y - diffY + percentage * 2 * diffY;
-
-        particle.gameObject.transform.position = new Vector3(x, y, 0);*/
+        timePassed += Time.deltaTime;
 
         hpf.timeToTravel = secondBtwBeat;
-
-        print(particle.gameObject.transform.position);
-
+        
         if (timePassed > secondBtwBeat)
         {
             if (flag)
@@ -91,7 +82,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
             }
             flag = true;
             timePassed = 0;
-            bip.Play();
+            bip.PlayDelayed(secondBtwBeat/2);
             hpf.Enable();
         }
 
@@ -113,7 +104,8 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     bool HasCorrectlyHit()
     {
         // two condition to consider the hit after the beginning of the sound
-        return (secondBtwBeat - timePassed) / secondBtwBeat <= deltaPush || timePassed / secondBtwBeat <= deltaPush;
+        return timePassed > secondBtwBeat / 2 - deltaPush && timePassed < secondBtwBeat / 2 + deltaPush;
+        //return (secondBtwBeat - timePassed) / secondBtwBeat <= deltaPush || timePassed / secondBtwBeat <= deltaPush;
     }
 
     void Lose()
@@ -155,7 +147,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
             keyCode = kc;
             beat1.Play();
             hpf.timeToTravel = secondBtwBeat;
-            hpf.Enable();
+            //hpf.Enable();
         }
         else if (keyCode != kc)
         {
