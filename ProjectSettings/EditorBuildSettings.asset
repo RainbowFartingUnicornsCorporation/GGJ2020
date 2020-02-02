@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 266c250dcd54b39428ad6e45d8693c13
+  - enabled: 1
+    path: Assets/Scenes/LeftEarScene.unity
+    guid: d1e0a1fa1c7a4f74c8ae61a4225be65c
+  - enabled: 1
+    path: Assets/Scenes/Heart.unity
+    guid: b9a245bf8d2e6c646bc28f3417821007
+  - enabled: 1
+    path: Assets/Scenes/RightEarScene.unity
+    guid: 9fdfb2f2332918847bc7e958420918f6
+  - enabled: 1
+    path: Assets/Scenes/Brain.unity
+    guid: 2cadb1788858cce4fb4c88eaac71dfa3
   m_configObjects: {}
