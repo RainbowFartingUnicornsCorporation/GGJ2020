@@ -7,6 +7,7 @@ public class EyeBehavior : MonoBehaviour, IInteraction
     private GameObject upCube;
     private GameObject downCube;
     public float eyeOpenness;
+    private float lockTime = 0;
 
 
     // Start is called before the first frame update
@@ -20,7 +21,10 @@ public class EyeBehavior : MonoBehaviour, IInteraction
     {
         eyeOpenness = eyeOpenness - eyeOpenness / 4;
         if (eyeOpenness < 1.5)
+        {
             eyeOpenness = 0;
+            lockTime = Random.Range(1, 5);
+        }
     }
 
     void UpdateEyePosition()
@@ -47,7 +51,9 @@ public class EyeBehavior : MonoBehaviour, IInteraction
         }
         else
         {
-            eyeOpenness += Time.deltaTime;
+            lockTime -= Time.deltaTime;
+            if (lockTime <= 0)
+                eyeOpenness += Time.deltaTime;
         }
         UpdateEyePosition();
     }
