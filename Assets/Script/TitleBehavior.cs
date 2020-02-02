@@ -14,16 +14,18 @@ public class TitleBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        loadedAssetBundle = AssetBundle.LoadFromFile("Assets/scenes");
+        //loadedAssetBundle = AssetBundle.LoadFromFile("Assets/scenes");
         renderer = GetComponent<MeshRenderer>();   
     }
 
     // Update is called once per frame
     void Update()
     {
+        //print(finishedName);
         if (enabled && PlayerPrefs.GetInt(finishedName,0) == 1)
         {
-            enabled = false;
+            print("DISABELING " + finishedName);
+            gameObject.SetActive(false);
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BlowBehaviour : MonoBehaviour
 {
@@ -106,6 +107,13 @@ public class BlowBehaviour : MonoBehaviour
         earSprite.SetFloat("AnimationSpeed", 0.0f);
         yield return new WaitForSeconds(0.3f);
         eeaaaahSound.Play();
+    
+        PlayerPrefs.SetInt("RightEarWon", 1);
+        PlayerPrefs.Save();
+
+        print(PlayerPrefs.GetInt("RightEarWon", -1));
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene("Start", LoadSceneMode.Single);
     }
 
 

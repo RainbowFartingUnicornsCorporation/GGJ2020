@@ -16,10 +16,10 @@ public class SessionManager : MonoBehaviour
         // First time in game
         PlayerPrefs.SetString("sessionId", AnalyticsSessionInfo.sessionId.ToString());
 
-        PlayerPrefs.SetInt("brainWon", 0);
-        PlayerPrefs.SetInt("rightWon", 0);
-        PlayerPrefs.SetInt("leftWon", 0);
-        PlayerPrefs.SetInt("heartWon", 0);
+        PlayerPrefs.SetInt("BrainWon", 0);
+        PlayerPrefs.SetInt("RightEarWon", 0);
+        PlayerPrefs.SetInt("LeftEarWon", 0);
+        PlayerPrefs.SetInt("HeartWon", 0);
         PlayerPrefs.Save();
 
     }
@@ -34,10 +34,10 @@ public class SessionManager : MonoBehaviour
             initialization();
         }
 
-        int brainWon = PlayerPrefs.GetInt("brainWon", 0);
-        int rightWon = PlayerPrefs.GetInt("rightWon", 0);
-        int leftWon = PlayerPrefs.GetInt("leftWon", 0);
-        int heartWon = PlayerPrefs.GetInt("heartWon", 0);
+        int brainWon = PlayerPrefs.GetInt("BrainWon", 0);
+        int rightWon = PlayerPrefs.GetInt("RightEarWon", 0);
+        int leftWon = PlayerPrefs.GetInt("LeftEarWon", 0);
+        int heartWon = PlayerPrefs.GetInt("HeartWon", 0);
 
         float musicLevel = 0;
         float soundLevel = 0;
@@ -49,15 +49,15 @@ public class SessionManager : MonoBehaviour
         }
         else if (rightWon == 1)
         {
-            rightLeftLevel = 0.5f;
-            musicLevel = 0.3f;
+            rightLeftLevel = 0.9f;
+            musicLevel = 0.35f;
             soundLevel = 1.0f;
 
         }
         else if (leftWon == 1)
         {
-            rightLeftLevel = -0.5f;
-            musicLevel = 0.3f;
+            rightLeftLevel = -0.9f;
+            musicLevel = 0.35f;
             soundLevel = 1.0f;
         }
         else
