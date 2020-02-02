@@ -38,8 +38,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     void Start()
     {
         secondBtwBeat = 60.0f / bpm;
-        beat1.volume = 10;
-        beat2.volume = 10;
+
     }
     
     void Update()

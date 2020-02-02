@@ -514,7 +514,7 @@ GameObject:
   - component: {fileID: 649741580}
   m_Layer: 0
   m_Name: Die
-  m_TagString: Sound
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -990,7 +990,7 @@ MonoBehaviour:
   death: {fileID: 649741580}
   bpm: 50
   acceleration: 1
-  deltaPush: 0.3
+  deltaPush: 0.24
 --- !u!4 &1163391831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3727846287275274575, guid: eaa380bfdbe87b1479d9cacb6e35a842,
@@ -1355,7 +1355,7 @@ GameObject:
   - component: {fileID: 1578818999}
   m_Layer: 0
   m_Name: Bip
-  m_TagString: Untagged
+  m_TagString: Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

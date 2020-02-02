@@ -71,8 +71,7 @@ public class SessionManager : MonoBehaviour
         AudioSource musicSrc = musique.GetComponent(typeof(AudioSource)) as AudioSource;
         if (musicSrc != null)
         {
-
-            print(musicSrc);
+  
             musicSrc.volume = musicLevel;
             musicSrc.panStereo = rightLeftLevel;
         }
@@ -82,6 +81,7 @@ public class SessionManager : MonoBehaviour
         audioSources = GameObject.FindGameObjectsWithTag("Sound");
         foreach (GameObject audioSource in audioSources)
         {
+            
             AudioSource tmp = audioSource.GetComponent(typeof(AudioSource)) as AudioSource;
             if (tmp != null)
             {
