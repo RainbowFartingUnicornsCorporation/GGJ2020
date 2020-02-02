@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,12 +22,9 @@ public class SynapseManager : MonoBehaviour
         PlayerPrefs.SetInt("BrainWon", 1);
         PlayerPrefs.Save();
 
-
         yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene("Start", LoadSceneMode.Single);
     }
-
-
 
     private void Update()
     {
@@ -40,10 +36,8 @@ public class SynapseManager : MonoBehaviour
                     return;
             }
             print("win");
-
+            win = true;
             StartCoroutine(Success());
         }
-       
-       
     }
 }
