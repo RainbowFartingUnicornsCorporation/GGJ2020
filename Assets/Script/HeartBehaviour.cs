@@ -132,7 +132,14 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         aeb.Kill();
         hpf.Disable();
         print("Perdu");
-        
+        ReturnToMenu();
+    }
+
+    IEnumerator ReturnToMenu()
+    {
+        PlayerPrefs.DeleteAll();
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene("Start", LoadSceneMode.Single);
     }
 
     public void HitIt()
