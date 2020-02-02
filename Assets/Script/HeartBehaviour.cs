@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HeartBehaviour : MonoBehaviour, IInteraction
 {
@@ -89,6 +90,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         if (score >= goal)
         {
             print("Gagné");
+            SceneManager.LoadScene("VictoryScreen", LoadSceneMode.Single);
         }
     }
 
