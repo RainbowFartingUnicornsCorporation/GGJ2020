@@ -11,6 +11,10 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     public float timeToHit = 1;
     public AnchorEventBroadcaster aeb;
 
+    public Transform anchorLeft;
+    public Transform anchorRight;
+    public GameObject particle;
+
     private bool playing = true;
     private bool notStarted = true;
 
@@ -65,6 +69,20 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         }
 
         timePassed += Time.deltaTime;
+        float percentage = timePassed / secondBtwBeat;
+        float diffX = anchorRight.position.x - anchorLeft.position.x;
+        float diffY = anchorRight.position.y - anchorLeft.position.y;
+        float x = anchorLeft.position.x - diffX + percentage * 2 * diffX;
+        float y = anchorLeft.position.y - diffY + percentage * 2 * diffY;
+
+
+        //float x = (timePassed / secondBtwBeat) * (anchorLeft.position.y) 
+        //float x = (anchorLeft.position.x + anchorRight.position.x) / 2 + timePassed/secondBtwBeat * diffX - diffX;// / (timePassed / secondBtwBeat);
+        //float y = (anchorLeft.position.y + anchorRight.position.y) / 2;// / (timePassed / secondBtwBeat);
+        particle.gameObject.transform.position = new Vector3(x, y, 0);
+
+        print(particle.gameObject.transform.position);
+
         if (timePassed > secondBtwBeat)
         {
             if (flag)
@@ -77,7 +95,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
             bip.Play();
         }
 
-        print(score);
+        //print(score);
         if (score >= goal)
         {
             print("Gagné");
@@ -95,7 +113,6 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     bool HasCorrectlyHit()
     {
         // two condition to consider the hit after the beginning of the sound
-        //return (secondBtwBeat - timePassed - 2 * timeToHitSecondKey) / secondBtwBeat <= deltaPush || timePassed - 2 * timeToHitSecondKey / secondBtwBeat <= deltaPush;
         return (secondBtwBeat - timePassed) / secondBtwBeat <= deltaPush || timePassed / secondBtwBeat <= deltaPush;
     }
 
