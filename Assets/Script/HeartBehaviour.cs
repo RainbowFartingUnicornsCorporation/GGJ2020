@@ -42,6 +42,8 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         if (!playing)
             return;
 
+        //print(timeToHitSecondKey);
+
         // Try to Hit
         if (timeToHitSecondKey <= 0)
         {
@@ -92,7 +94,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
     bool HasCorrectlyHit()
     {
         // two condition to consider the hit after the beginning of the sound
-        return Mathf.Abs(timePassed - secondBtwBeat) / secondBtwBeat <= deltaPush || timePassed / secondBtwBeat <= deltaPush;
+        return (secondBtwBeat - timePassed) / secondBtwBeat <= deltaPush || timePassed / secondBtwBeat <= deltaPush;
     }
 
     void Lose()
@@ -112,10 +114,14 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         if (HasCorrectlyHit())
         {
             flag = false;
+            animator.SetBool("Beat", true);
+            beat2.Play();
+            print("HIT");
         }
         else
         {
             Accelerate();
+            print("FAILED");
         }
     }
 
@@ -143,9 +149,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         {
             if (timeToHitSecondKey <= timeToHit)
             {
-                animator.SetBool("Beat", true);
                 HitIt();
-                beat2.Play();
             }
             timeToHitSecondKey = 0;
         }

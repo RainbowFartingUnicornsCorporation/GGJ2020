@@ -622,16 +622,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBeforeStarting: 20
   animator: {fileID: 1163391832}
-  timeToWait: 10
-  timeToHit: 20
+  timeToWait: 0.2
+  timeToHit: 1
   aeb: {fileID: 929268643}
   beat1: {fileID: 370584726}
   beat2: {fileID: 1548803556}
   bip: {fileID: 1578818999}
   death: {fileID: 649741580}
-  bpm: 60
+  bpm: 40
   acceleration: 5
-  deltaPush: 0.5
+  deltaPush: 0.2
 --- !u!4 &1163391831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3727846287275274575, guid: eaa380bfdbe87b1479d9cacb6e35a842,
@@ -1202,6 +1202,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299527764396792728, guid: 0d815c29c69366f409b243d2aff0f00a,
+        type: 3}
+      propertyPath: ObservedAnchors.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8299527764396792728, guid: 0d815c29c69366f409b243d2aff0f00a,
         type: 3}
