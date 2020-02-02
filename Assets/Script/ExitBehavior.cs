@@ -20,6 +20,6 @@ public class ExitBehavior : MonoBehaviour
     private void OnMouseDown()
     {
         Application.Quit();
-        EditorApplication.isPlaying = false;
+        //EditorApplication.isPlaying = false;
     }
 }
