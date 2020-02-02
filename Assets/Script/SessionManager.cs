@@ -46,19 +46,20 @@ public class SessionManager : MonoBehaviour
         if (rightWon == 1 && leftWon == 1)
         {
             musicLevel = 0.5f;
+            soundLevel = 1;
         }
         else if (rightWon == 1)
         {
-            rightLeftLevel = 0.9f;
+            rightLeftLevel = 0.95f;
             musicLevel = 0.35f;
-            soundLevel = 1.0f;
+            soundLevel = 0.5f;
 
         }
         else if (leftWon == 1)
         {
-            rightLeftLevel = -0.9f;
+            rightLeftLevel = -0.95f;
             musicLevel = 0.35f;
-            soundLevel = 1.0f;
+            soundLevel = 0.5f;
         }
         else
         {
