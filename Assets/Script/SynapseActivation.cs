@@ -6,20 +6,20 @@ public class SynapseActivation : MonoBehaviour
 
     private const string ENERGY_DOT = "EnergyDot";
 
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == ENERGY_DOT)
+        if (collider.GetComponent<SpriteRenderer>().gameObject.tag == ENERGY_DOT)
         {
-            GetComponent<MeshRenderer>().material.color = Color.green;
+            GetComponent<SpriteRenderer>().enabled = true;
             isActivated = true;
         }
     }
 
-    void OnTriggerExit(Collider collider)
+    void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.gameObject.tag == ENERGY_DOT)
         {
-            GetComponent<MeshRenderer>().material.color = Color.red;
+            GetComponent<SpriteRenderer>().enabled = false;
             isActivated = false;
         }
     }

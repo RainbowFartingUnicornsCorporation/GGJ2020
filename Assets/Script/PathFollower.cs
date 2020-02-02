@@ -21,12 +21,20 @@ public class PathFollower : MonoBehaviour
 
         var nextPosition = pathToFollow.path_objs[CurrentWayPointId].position;
         float distance = Vector3.Distance(nextPosition, transform.position);
-        transform.position = Vector3.MoveTowards(transform.position, nextPosition, Time.deltaTime * speed);
 
         if (distance <= reachDistance)
             CurrentWayPointId++;
 
         if (CurrentWayPointId >= pathToFollow.path_objs.Count)
+        {
             CurrentWayPointId = 0;
+            transform.position = pathToFollow.path_objs[CurrentWayPointId].position;
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, nextPosition, Time.deltaTime * speed);
+        }
+
+            
     }
 }
