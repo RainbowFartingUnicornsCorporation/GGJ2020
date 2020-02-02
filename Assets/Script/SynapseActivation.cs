@@ -5,6 +5,14 @@ public class SynapseActivation : MonoBehaviour
     public bool isActivated = false;
 
     private const string ENERGY_DOT = "EnergyDot";
+    public AudioSource buzz;
+    private bool isIn;
+
+    void Start()
+    {
+        isIn = true;
+    }
+
 
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -12,6 +20,12 @@ public class SynapseActivation : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().enabled = true;
             isActivated = true;
+            if (isIn)
+            {
+                buzz.Play();
+                isIn = false;
+            }
+
         }
     }
 
@@ -21,6 +35,10 @@ public class SynapseActivation : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().enabled = false;
             isActivated = false;
+        }
+        if (!isIn)
+        {
+            isIn = true;
         }
     }
 }
