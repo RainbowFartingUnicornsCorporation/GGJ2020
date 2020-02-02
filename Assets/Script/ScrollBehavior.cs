@@ -8,12 +8,14 @@ public class ScrollBehavior : MonoBehaviour
 
     public AudioSource friction_1;
     public AudioSource friction_2;
+    public AudioSource stickOut;
+    public AudioSource Eeuuuhaaa;
     public float penality;
     public float winCoefficient;
     public Animator earStickAnimator;
     
     private float score;
-
+    private bool finish = false;
 
 
     void ComputeScore(float scrollScore)
@@ -40,40 +42,47 @@ public class ScrollBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float scrollScore = Input.GetAxis("Mouse ScrollWheel");
-        float localScore = Mathf.Abs(scrollScore) * winCoefficient;
-        ComputeScore(localScore);
-        if (!friction_1.isPlaying && !friction_2.isPlaying)
+        if (!finish)
         {
-            if (scrollScore > 0f)
+
+            float scrollScore = Input.GetAxis("Mouse ScrollWheel");
+            float localScore = Mathf.Abs(scrollScore) * winCoefficient;
+            ComputeScore(localScore);
+            if (!friction_1.isPlaying && !friction_2.isPlaying)
             {
-                friction_1.Play();
+                if (scrollScore > 0f)
+                {
+                    friction_1.Play();
+
+                }
+                else if (scrollScore < 0f)
+                {
+                    friction_2.Play();
+                }
+            }
+            print(score);
+            earStickAnimator.SetFloat("speedEarStickAnim", localScore / 2);
+
+            if (score >= 200)
+            {
+                friction_1.Stop();
+                friction_2.Stop();
+                earStickAnimator.SetBool("stickOut", true);
+                // WIN
+                StartCoroutine(Success());
 
             }
-            else if (scrollScore < 0f)
-            {
-                friction_2.Play();
-            }
-        }
-        print(score);
-        earStickAnimator.SetFloat("speedEarStickAnim", localScore / 2);
-
-        if (score >= 200)
-        {
-            earStickAnimator.SetBool("stickOut", true);
-            // WIN
-
-            StartCoroutine(Success());
-
         }
     }
 
 
     IEnumerator Success()
     {
-        // Pop.Play();
+        finish = true;
+
+        stickOut.Play();
         yield return new WaitForSeconds(0.3f);
-       // eeaaaahSound.Play();
+        Eeuuuhaaa.Play();
 
         PlayerPrefs.SetInt("LeftEarWon", 1);
         PlayerPrefs.Save();
