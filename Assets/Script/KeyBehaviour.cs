@@ -4,7 +4,7 @@ public class KeyBehaviour : MonoBehaviour
 {
     public KeyCode Value;
 
-    private int MAX_DISTANCE = 1;
+    private const int MAX_DISTANCE = 1;
     private const string ANCHOR = "Anchor";
 
     private Rigidbody _keyRigidBody;
@@ -17,7 +17,7 @@ public class KeyBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == ANCHOR)
+        if (collider.gameObject.tag == ANCHOR && collider.gameObject.GetComponent<AnchorBehaviour>().isFree)
             _anchorCollider = collider;
     }
 
@@ -35,11 +35,16 @@ public class KeyBehaviour : MonoBehaviour
             _keyRigidBody.position = _anchorCollider.transform.position;
             _keyRigidBody.velocity = Vector3.zero;
             _keyRigidBody.angularVelocity = Vector3.zero;
+            _anchorCollider.gameObject.GetComponent<AnchorBehaviour>().RegisterKey();
         }
         else
         {
             _keyRigidBody.useGravity = true;
-            _anchorCollider = null;
+            if (_anchorCollider != null)
+            {
+                _anchorCollider.gameObject.GetComponent<AnchorBehaviour>().UnregisterKey();
+                _anchorCollider = null;
+            }
         }
     }
 

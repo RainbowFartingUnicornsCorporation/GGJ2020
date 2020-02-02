@@ -5,6 +5,7 @@ public class AnchorBehaviour : MonoBehaviour
     public MonoBehaviour Interaction;
     public SpriteRenderer empty;
     public SpriteRenderer used;
+    public bool isFree = true;
 
     private bool dead = false;
 
@@ -16,14 +17,9 @@ public class AnchorBehaviour : MonoBehaviour
     {
         if (dead)
             return;
+
         if (_keyCollider != null)
         {
-            /*if (Input.GetKeyDown(KeyCode.Space))
-            {
-                DetachKey();
-                return;
-            }*/
-
             _keyCollider.gameObject.GetComponent<KeyBehaviour>().transform.eulerAngles = new Vector3(0, 0, 180);
 
             if (Input.GetKeyDown(_keyCollider.gameObject.GetComponent<KeyBehaviour>().Value))
@@ -37,8 +33,10 @@ public class AnchorBehaviour : MonoBehaviour
     {
         if (!_keyCollider)
             return;
+
         used.gameObject.SetActive(false);
         empty.gameObject.SetActive(true);
+        _keyCollider.isTrigger = false;
         _keyCollider.gameObject.GetComponent<KeyBehaviour>().Detach();
         _keyCollider = null;
     }
@@ -50,24 +48,37 @@ public class AnchorBehaviour : MonoBehaviour
         dead = true;
     }
 
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.tag == KEY)
-        {
-            _keyCollider = collider;
-
-            used.gameObject.SetActive(true);
-            empty.gameObject.SetActive(false);
-        }
-    }
+   void OnTriggerEnter(Collider collider)
+   {
+       if (_keyCollider == null && collider.gameObject.tag == KEY)
+       {
+           _keyCollider = collider;
+           collider.isTrigger = true;
+ 
+           used.gameObject.SetActive(true);
+           empty.gameObject.SetActive(false);
+       }
+   }
 
     void OnTriggerExit(Collider collider)
     {
-        if (collider.gameObject.tag == KEY)
+        if (_keyCollider == collider && collider.gameObject.tag == KEY)
         {
             _keyCollider = null;
+            collider.isTrigger = false;
+           isFree = true;
             used.gameObject.SetActive(false);
             empty.gameObject.SetActive(true);
         }
+    }
+
+    public void RegisterKey()
+    {
+        isFree = false;
+    }
+
+    public void UnregisterKey()
+    {
+        isFree = true;
     }
 }
