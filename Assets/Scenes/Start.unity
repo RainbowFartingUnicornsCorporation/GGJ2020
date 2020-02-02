@@ -787,7 +787,7 @@ PrefabInstance:
     - target: {fileID: 1374001637985917785, guid: a48b1e36ce3ac4948a239564d9df7355,
         type: 3}
       propertyPath: finishedName
-      value: LeftHearWon
+      value: LeftEarWon
       objectReference: {fileID: 0}
     - target: {fileID: 7084241301436948744, guid: a48b1e36ce3ac4948a239564d9df7355,
         type: 3}

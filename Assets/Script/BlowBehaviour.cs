@@ -111,8 +111,8 @@ public class BlowBehaviour : MonoBehaviour
         PlayerPrefs.SetInt("RightEarWon", 1);
         PlayerPrefs.Save();
 
-        print(PlayerPrefs.GetInt("RightEarWon", -1));
-        yield return new WaitForSeconds(2.0f);
+        //print(PlayerPrefs.GetInt("RightEarWon", -1));
+        yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene("Start", LoadSceneMode.Single);
     }
 

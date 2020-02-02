@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScrollBehavior : MonoBehaviour
 {
@@ -60,6 +61,27 @@ public class ScrollBehavior : MonoBehaviour
         if (score >= 200)
         {
             earStickAnimator.SetBool("stickOut", true);
+            // WIN
+
+            StartCoroutine(Success());
+
         }
     }
+
+
+    IEnumerator Success()
+    {
+        // Pop.Play();
+        yield return new WaitForSeconds(0.3f);
+       // eeaaaahSound.Play();
+
+        PlayerPrefs.SetInt("LeftEarWon", 1);
+        PlayerPrefs.Save();
+        
+
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene("Start", LoadSceneMode.Single);
+    }
+
+
 }
