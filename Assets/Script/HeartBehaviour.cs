@@ -132,7 +132,7 @@ public class HeartBehaviour : MonoBehaviour, IInteraction
         aeb.Kill();
         hpf.Disable();
         print("Perdu");
-        ReturnToMenu();
+        StartCoroutine(ReturnToMenu());
     }
 
     IEnumerator ReturnToMenu()

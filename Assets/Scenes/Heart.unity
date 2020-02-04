@@ -995,7 +995,7 @@ MonoBehaviour:
   bip: {fileID: 1578818999}
   death: {fileID: 649741580}
   bpm: 50
-  acceleration: 1
+  acceleration: 5
   deltaPush: 0.23
 --- !u!4 &1163391831 stripped
 Transform:
