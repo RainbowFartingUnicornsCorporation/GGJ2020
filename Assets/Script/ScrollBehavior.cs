@@ -20,7 +20,7 @@ public class ScrollBehavior : MonoBehaviour
 
     void ComputeScore(float scrollScore)
     {
-        //print(score);
+        print(score);
         if(scrollScore == 0f)
         {
             score -= penality;
@@ -29,6 +29,8 @@ public class ScrollBehavior : MonoBehaviour
         {
             score += scrollScore;
         }
+        if (score < 0)
+            score = 0;
     }
 
     
@@ -63,7 +65,7 @@ public class ScrollBehavior : MonoBehaviour
             print(score);
             earStickAnimator.SetFloat("speedEarStickAnim", localScore / 2);
 
-            if (score >= 200)
+            if (score >= 75)
             {
                 friction_1.Stop();
                 friction_2.Stop();
