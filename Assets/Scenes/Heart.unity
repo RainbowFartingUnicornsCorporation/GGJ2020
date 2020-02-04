@@ -988,7 +988,7 @@ MonoBehaviour:
   anchorLeft: {fileID: 421339322}
   anchorRight: {fileID: 1338430270}
   particle: {fileID: 548549739}
-  goal: 5
+  goal: 4
   hpf: {fileID: 548549742}
   beat1: {fileID: 370584726}
   beat2: {fileID: 1548803556}
