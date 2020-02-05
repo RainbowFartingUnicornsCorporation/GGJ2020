@@ -302,6 +302,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: CompleteEyesSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 2616301605153584306, guid: 0d815c29c69366f409b243d2aff0f00a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.939999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2616301605153584311, guid: 0d815c29c69366f409b243d2aff0f00a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2616301606244082608, guid: 0d815c29c69366f409b243d2aff0f00a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2616301606244082611, guid: 0d815c29c69366f409b243d2aff0f00a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.94
+      objectReference: {fileID: 0}
     - target: {fileID: 6272351195976340795, guid: 0d815c29c69366f409b243d2aff0f00a,
         type: 3}
       propertyPath: m_LocalPosition.x
